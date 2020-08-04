@@ -13,6 +13,8 @@ soup = BeautifulSoup(url.text, "html.parser")
 
 movie_list = soup.select("body > div.basic > div#container > div#content > div.article > div.obj_section > div.lst_wrap > ul.lst_detail_t1 > li")
 
+movie_chart = {}
+
 for movie in movie_list:
 
     title = movie.select_one("dl.lst_dsc > dt.tit > a").get_text()
@@ -20,3 +22,6 @@ for movie in movie_list:
     print(f'title : {title}', end=" ")
     print(f'code : {code}')
 
+    movie_chart[title] = code
+
+print(movie_chart)
